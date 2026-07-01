@@ -41,7 +41,7 @@ def get_stock_price(code):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
             "Accept": "application/json"
         }
-       res = requests.get(url, headers=headers, timeout=2)
+        res = requests.get(url, headers=headers, timeout=2)
         if res.status_code == 200:
             data = res.json()
             meta = data["chart"]["result"][0]["meta"]
@@ -62,7 +62,7 @@ def get_stock_price(code):
     try:
         url = f"https://finance.naver.com/item/main.naver?code={code}"
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-        res = requests.get(url, headers=headers, timeout=5)
+        res = requests.get(url, headers=headers, timeout=2)
         res.encoding = "euc-kr"
         html = res.text
 
@@ -113,7 +113,7 @@ SIMPLE_SYSTEM = "당신은 한국 주식 투자 분석 전문가입니다. 한�
 
 
 def ask(system, question):
-    res = requests.get(url, headers=headers, timeout=2)
+    res = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=400,
         system=system,
