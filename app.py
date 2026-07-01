@@ -41,7 +41,7 @@ def get_stock_price(code):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
             "Accept": "application/json"
         }
-        res = requests.get(url, headers=headers, timeout=5)
+       res = requests.get(url, headers=headers, timeout=2)
         if res.status_code == 200:
             data = res.json()
             meta = data["chart"]["result"][0]["meta"]
